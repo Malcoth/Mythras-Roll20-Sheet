@@ -30,6 +30,9 @@
         <option value=".2">1/5</option>
     </select>
     <input type="checkbox" class="rank-enabled-toggle hidden" name="attr_luck_points_rank" value="1">
+    <input type="checkbox" class="magic-points-enabled-toggle hidden" name="attr_magic_points_enabled" value="1" checked>
+    <input type="checkbox" class="power-points-enabled-toggle hidden" name="attr_power_points_enabled" value="1">
+    <input type="checkbox" class="prana-points-enabled-toggle hidden" name="attr_prana_points_enabled" value="1">
     <input type="checkbox" class="tenacity-enabled-toggle hidden" name="attr_tenacity_enabled" value="1">
     <input type="checkbox" class="affiliations-enabled-toggle hidden" name="attr_affiliations_enabled" value="1">
     <input type="checkbox" class="extended-conflict-toggle hidden" name="attr_extended_conflict_enabled" value="1">
@@ -181,7 +184,31 @@
                 <option value="1" data-i18n="yes-u">Yes</option>
             </select>
             <br>
-            
+
+            <span i18n-data="magic-points-enabled-u">Magic Points Enabled</span>:
+            <select name="attr_magic_points_enabled_option">
+                <option value="default" data-i18n="use-setting-default-u" selected>Use Setting Default</option>
+                <option value="0" data-i18n="no-u">No</option>
+                <option value="1" data-i18n="yes-u">Yes</option>
+            </select>
+            <br>
+
+            <span i18n-data="power-points-enabled-u">Power Points Enabled</span>:
+            <select name="attr_power_points_enabled_option">
+                <option value="default" data-i18n="use-setting-default-u" selected>Use Setting Default</option>
+                <option value="0" data-i18n="no-u">No</option>
+                <option value="1" data-i18n="yes-u">Yes</option>
+            </select>
+            <br>
+
+            <span i18n-data="prana-points-enabled-u">Prana Points Enabled</span>:
+            <select name="attr_prana_points_enabled_option">
+                <option value="default" data-i18n="use-setting-default-u" selected>Use Setting Default</option>
+                <option value="0" data-i18n="no-u">No</option>
+                <option value="1" data-i18n="yes-u">Yes</option>
+            </select>
+            <br>
+
             <span i18n-data="tenacity-enabled-u">Tenacity Enabled</span>:
             <select name="attr_tenacity_enabled_option">
                 <option value="default" data-i18n="use-setting-default-u" selected>Use Setting Default</option>
@@ -1214,7 +1241,7 @@
                     <div data-i18n-list-item="initiative"><div class="stats-attribute-label"><span data-i18n="initiative-u">Initiative</span>:</div> <input type="number" class="number-width" name="attr_initiative_bonus_base" value="0" readonly> + <input type="number" class="number-width" name="attr_initiative_bonus_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width total" name="attr_initiative_bonus" value="0" readonly></div>
                     <div data-i18n-list-item="intensity" class="hidden"></div>
                     <div data-i18n-list-item="luck_points"><div class="stats-attribute-label"><span data-i18n="luck-points-u">Luck Points</span>:</div> <input type="number" class="number-width" name="attr_luck_points_base" value="2" readonly> + <input type="number" class="number-width" name="attr_luck_points_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width total" name="attr_luck_points_max" value="2" readonly></div>
-                    <div data-i18n-list-item="magic_points" class="default-style thennla-style classic-fantasy-style"><div><div class="stats-attribute-label"><span data-i18n="magic-points-u">Magic Points</span>:</div> <input type="number" class="number-width" name="attr_magic_points_base" value="11" readonly> + <input type="number" class="number-width" name="attr_magic_points_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width total" name="attr_magic_points_max" value="11" readonly></div></div>
+                    <div data-i18n-list-item="magic_points" class="magic-points-enabled"><div><div class="stats-attribute-label"><span data-i18n="magic-points-u">Magic Points</span>:</div> <input type="number" class="number-width" name="attr_magic_points_base" value="11" readonly> + <input type="number" class="number-width" name="attr_magic_points_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width total" name="attr_magic_points_max" value="11" readonly></div></div>
                     <div data-i18n-list-item="move_rate">
                         <div class="stats-attribute-label"><span data-i18n="move-rate-u">Move Rate</span>:</div> <input type="number" class="number-width" name="attr_movement_rate_species" value="6"> + <input type="number" class="number-width" name="attr_movement_rate_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width total" name="attr_movement_rate" value="6" readonly>
                         <ul>
@@ -1222,8 +1249,8 @@
                             <li><div class="stats-attribute-label"><span data-i18n="species-swim-u">Species Swim</span>: </div> <input type="number" class="number-width" name="attr_movement_rate_species_swim" value="6"></li>
                         </ul>
                     </div>
-                    <div data-i18n-list-item="power_points" class="m-space-style"><div><div class="stats-attribute-label"><span data-i18n="power-points-u">Power Points</span>:</div> <input type="number" class="number-width" name="attr_magic_points_base" value="11" readonly> + <input type="number" class="number-width" name="attr_magic_points_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width total" name="attr_magic_points_max" value="11" readonly></div></div>
-                    <div data-i18n-list-item="prana_points" class="luther-arkwright-style"><div><div class="stats-attribute-label"><span data-i18n="prana-points-u">Prana Points</span>:</div> <input type="number" class="number-width" 0name="attr_magic_points_base" value="11" readonly> + <input type="number" class="number-width" name="attr_magic_points_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width total" name="attr_magic_points_max" value="11" readonly></div></div>
+                    <div data-i18n-list-item="power_points" class="power-points-enabled"><div><div class="stats-attribute-label"><span data-i18n="power-points-u">Power Points</span>:</div> <input type="number" class="number-width" name="attr_power_points_base" value="11" readonly> + <input type="number" class="number-width" name="attr_power_points_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width total" name="attr_power_points_max" value="11" readonly></div></div>
+                    <div data-i18n-list-item="prana_points" class="prana-points-enabled"><div><div class="stats-attribute-label"><span data-i18n="prana-points-u">Prana Points</span>:</div> <input type="number" class="number-width" 0name="attr_prana_points_base" value="11" readonly> + <input type="number" class="number-width" name="attr_prana_points_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width total" name="attr_prana_points_max" value="11" readonly></div></div>
                     <div data-i18n-list-item="tenacity" class="tenacity-enabled"><div><div class="stats-attribute-label"><span data-i18n="tenacity-u">Tenacity</span>:</div> <input type="number" class="number-width" name="attr_tenacity_base" value="11" readonly> + <input type="number" class="number-width" name="attr_tenacity_other" data-i18n-placeholder="other-u" placeholder="Other"> = <input type="number" class="number-width-width total" name="attr_tenacity_max" value="11" readonly></div></div>
                 </div>
             </div>
@@ -1915,7 +1942,7 @@
                                 </div>
                             </div>
                             
-                            <div class="default-style thennla-style classic-fantasy-style" data-i18n-list-item="magic_points">
+                            <div class="magic-points-enabled" data-i18n-list-item="magic_points">
                                 <div class="attribute-row">
                                     <div class="attribute-label"><span data-i18n="magic-points-u">Magic Points</span>:</div>
                                     <div class="attribute-number"><input type="number" class="full-width" name="attr_magic_points_temp" value="0"></div>
@@ -1962,7 +1989,7 @@
                                 </div>
                             </div>
                             
-                            <div class="m-space-style" data-i18n-list-item="power_points">
+                            <div class="power-points-enabled" data-i18n-list-item="power_points">
                                 <div class="attribute-row">
                                     <div class="attribute-label"><span data-i18n="power-points-u">Power Points</span>:</div>
                                     <div class="attribute-number"><input type="number" class="full-width" name="attr_power_points_temp" value="0"></div>
@@ -1976,7 +2003,7 @@
                                 </div>
                             </div>
                             
-                            <div class="luther-arkwright-style" data-i18n-list-item="prana_points">
+                            <div class="prana-points-enabled" data-i18n-list-item="prana_points">
                                 <div class="attribute-row">
                                     <div class="attribute-label"><span data-i18n="prana-points-u">Prana Points</span>:</div>
                                     <div class="attribute-number"><input type="number" class="full-width" name="attr_prana_points_temp" value="0"></div>
@@ -4580,7 +4607,7 @@
                                     <div>
                                         <span data-i18n="action-points-u" class="bold">Action Points</span>: <input type="number" class="number-width" name="attr_fetish_action_points" value="ceil((@{fetish_int}+@{fetish_pow})/12)" disabled>
                                         <span data-i18n="initiative-bonus-u" class="bold">Init. Bonus</span>: <input type="number" class="number-width" name="attr_fetish_initiative_bonus" value="ceil((@{fetish_int}+@{fetish_cha})/2)" disabled>
-                                        <span data-i18n="magic-points-u" class="bold">Magic Points</span>: <input type="number" class="number-width-sm" name="attr_fetish_magic_points" value="11"> / <input type="number" class="number-width-sm" name="attr_fetish_magic_points_max" value="@{fetish_pow}" disabled>
+                                        <span class="magic-points-enabled"><span data-i18n="magic-points-u" class="bold">Magic Points</span>: <input type="number" class="number-width-sm" name="attr_fetish_magic_points" value="11"> / <input type="number" class="number-width-sm" name="attr_fetish_magic_points_max" value="@{fetish_pow}" disabled></span>
                                         <span class="tenacity-enabled"><span data-i18n="tenacity-u" class="bold">Tenacity</span>: <input type="number" class="number-width-sm" name="attr_fetish_tenacity" value="11"> / <input type="number" class="number-width-sm" name="attr_fetish_tenacity_max" value="@{fetish_pow}" disabled></span>
                                         <span data-i18n="spirit-damage-u" class="bold">Spirit Damage</span>: <input type="text" class="damage-width text-align-center disabled" name="attr_fetish_spirit_damage" value="1d8"> <button type="roll" class="reduced-size d100 button-width" name="roll_fetish_spirit_damage" value="@{roll_display}&{template:weapon} {{name=^{spirit-damage-u}}} {{character=@{name}}} {{damage=[[@{fetish_spirit_damage}]]}}"></button>
                                     </div>
@@ -5642,7 +5669,7 @@
                         /
                         <div class="mook-attr-value-col"><input type="number" class="full-width total" name="attr_luck_points_max" value="2" readonly></div>
                     </div>
-                    <div class="default-style thennla-style classic-fantasy-style" data-i18n-list-item="magic_points">
+                    <div class="magic-points-enabled" data-i18n-list-item="magic_points">
                         <div class="mook-attr-name-col"><span class="bold" data-i18n="magic-points-u">Magic Points</span>:</div>
                         <div class="mook-attr-value-col"><input type="number" class="full-width" name="attr_magic_points" value="11"></div>
                         /
@@ -5664,13 +5691,13 @@
                         <span class="invisible">/</span>
                         <div class="mook-attr-value-col"><input type="number" class="full-width total" name="attr_fly_move" value="0" readonly></div>
                     </div>
-                    <div class="m-space-style" data-i18n-list-item="power_points">
+                    <div class="power-points-enabled" data-i18n-list-item="power_points">
                         <div class="mook-attr-name-col"><span class="bold" data-i18n="power-points-u">Power Points</span>:</div>
                         <div class="mook-attr-value-col"><input type="number" class="full-width" name="attr_power_points" value="11"></div>
                         /
                         <div class="mook-attr-value-col"><input type="number" class="full-width total" name="attr_power_points_max" value="11" readonly></div>
                     </div>
-                    <div class="luther-arkwright-style" data-i18n-list-item="prana_points">
+                    <div class="prana-points-enabled" data-i18n-list-item="prana_points">
                         <div class="mook-attr-name-col"><span class="bold" data-i18n="prana-points-u">Prana Points</span>:</div>
                         <div class="mook-attr-value-col"><input type="number" class="full-width" name="attr_prana_points" value="11"></div>
                         /
@@ -5997,7 +6024,7 @@
                         <input type="number" class="number-width total" name="attr_spirit_intensity" value="2" readonly>
                     </div>
                     <div class="hidden" data-i18n-list-item="luck_points"></div>
-                    <div class="default-style thennla-style classic-fantasy-style" data-i18n-list-item="magic_points">
+                    <div class="magic-points-enabled" data-i18n-list-item="magic_points">
                         <div class="mook-attr-name-col"><span class="bold" data-i18n="magic-points-u">Magic Points</span>:</div>
                         <div class="mook-attr-value-col"><input type="number" class="number-width-sm" name="attr_magic_points_mook1" value="11"></div>
                         <div class="mook-attr-value-col"><input type="number" class="number-width-sm" name="attr_magic_points_mook2" value="11"></div>
@@ -6016,7 +6043,7 @@
                         <div class="mook-attr-name-col"><span class="bold" data-i18n="move-rate-u">Move Rate</span>:</div>
                         <span data-i18n="walk-u">Walk</span>:<input type="number" name="attr_walk_move" value="6" readonly>&nbsp;<span data-i18n="swim-u">Swim</span>:<input type="text" style="text-align: center" class="number-width" name="attr_swim_move" value="7" readonly>&nbsp;<span data-i18n="fly-u">Fly</span>:<input type="number" name="attr_fly_move" value="0" readonly>
                     </div>
-                    <div class="m-space-style" data-i18n-list-item="power_points">
+                    <div class="power-points-enabled" data-i18n-list-item="power_points">
                         <div class="mook-attr-name-col"><span class="bold" data-i18n="power-points-u">Power Points</span>:</div>
                         <div class="mook-attr-value-col"><input type="number" class="number-width-sm" name="attr_power_points_mook1" value="11"></div>
                         <div class="mook-attr-value-col"><input type="number" class="number-width-sm" name="attr_power_points_mook2" value="11"></div>
@@ -6031,7 +6058,7 @@
                         /
                         <div class="mook-attr-value-col"><input type="number" class="number-width-sm total" name="attr_power_points_max" value="11" readonly></div>
                     </div>
-                    <div class="luther-arkwright-style" data-i18n-list-item="prana_points">
+                    <div class="prana-points-enabled" data-i18n-list-item="prana_points">
                         <div class="mook-attr-name-col"><span class="bold" data-i18n="prana-points-u">Prana Points</span>:</div>
                         <div class="mook-attr-value-col"><input type="number" class="number-width-sm" name="attr_prana_points_mook1" value="11"></div>
                         <div class="mook-attr-value-col"><input type="number" class="number-width-sm" name="attr_prana_points_mook2" value="11"></div>
@@ -7422,7 +7449,7 @@
                                         <div>
                                             <span data-i18n="action-points-u" class="bold">Action Points</span>: <input type="number" class="number-width" name="attr_fetish_action_points" value="ceil((@{fetish_int}+@{fetish_pow})/12)" disabled>
                                             <span data-i18n="initiative-bonus-u" class="bold">Init. Bonus</span>: <input type="number" class="number-width" name="attr_fetish_initiative_bonus" value="ceil((@{fetish_int}+@{fetish_cha})/2)" disabled>
-                                            <span data-i18n="magic-points-u" class="bold">Magic Points</span>: <input type="number" class="number-width-sm" name="attr_fetish_magic_points" value="11"> / <input type="number" class="number-width-sm" name="attr_fetish_magic_points_max" value="@{fetish_pow}" disabled>
+                                            <span class="magic-points-enabled"><span data-i18n="magic-points-u" class="bold">Magic Points</span>: <input type="number" class="number-width-sm" name="attr_fetish_magic_points" value="11"> / <input type="number" class="number-width-sm" name="attr_fetish_magic_points_max" value="@{fetish_pow}" disabled></span>
                                             <span class="tenacity-enabled"><span data-i18n="tenacity-u" class="bold">Tenacity</span>: <input type="number" class="number-width-sm" name="attr_fetish_tenacity" value="11"> / <input type="number" class="number-width-sm" name="attr_fetish_tenacity_max" value="@{fetish_pow}" disabled></span>
                                             <span data-i18n="spirit-damage-u" class="bold">Spirit Damage</span>: <input type="text" class="damage-width text-align-center disabled" name="attr_fetish_spirit_damage" value="1d8"> <button type="roll" class="reduced-size d100 button-width" name="roll_fetish_spirit_damage" value="@{roll_display}&{template:weapon} {{name=^{spirit-damage-u}}} {{character=@{name}}} {{damage=[[@{fetish_spirit_damage}]]}}"></button>
                                         </div>

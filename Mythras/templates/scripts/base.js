@@ -2303,7 +2303,7 @@
     }
     
     var campaign_options = function() {
-        getAttrs(["setting_option", "luck_points_rank_option", "herculean_mod_option", "vehicle_type_option", "extended_conflict_enabled_option", "simplified_combat_enabled_option", "action_points_calc_option", "tenacity_enabled_option", "luther_arkwright_style_option", "m_space_style_option", "boating_standard_option", "status_standard_option", "superstition_standard_option", "linguistics_enabled_option", "dependencies_enabled_option", "firearms_enabled_option", "reach_enabled_option", "affiliations_enabled_option", "ms_psionics_enabled_option", "roman_magic_enabled_option", "arcane_magic_enabled_option", "divine_magic_enabled_option", "folk_magic_enabled_option", "fae_powers_enabled_option", "folk_magic_range_multiplier_option", "animism_enabled_option", "mysticism_enabled_option", "mythras_psionics_enabled_option", "sorcery_enabled_option", "theism_enabled_option", "max_devotional_pool_based_on_option"], function(v) {
+        getAttrs(["setting_option", "luck_points_rank_option", "herculean_mod_option", "vehicle_type_option", "extended_conflict_enabled_option", "simplified_combat_enabled_option", "action_points_calc_option", "magic_points_enabled_option", "power_points_enabled_option", "prana_points_enabled_option", "tenacity_enabled_option", "luther_arkwright_style_option", "m_space_style_option", "boating_standard_option", "status_standard_option", "superstition_standard_option", "linguistics_enabled_option", "dependencies_enabled_option", "firearms_enabled_option", "reach_enabled_option", "affiliations_enabled_option", "ms_psionics_enabled_option", "roman_magic_enabled_option", "arcane_magic_enabled_option", "divine_magic_enabled_option", "folk_magic_enabled_option", "fae_powers_enabled_option", "folk_magic_range_multiplier_option", "animism_enabled_option", "mysticism_enabled_option", "mythras_psionics_enabled_option", "sorcery_enabled_option", "theism_enabled_option", "max_devotional_pool_based_on_option"], function(v) {
             var newoptions = {};
             // Default Setting Configs
             var setting_configs = {
@@ -2313,6 +2313,9 @@
                 action_points_calc: "calculate",
                 herculean_mod: ".1",
                 luck_points_rank: "0",
+                magic_points_enabled: "1",
+                power_points_enabled: "0",
+                prana_points_enabled: "0",
                 tenacity_enabled: "0",
                 boating_standard: "1",
                 status_standard: "0",
@@ -2340,6 +2343,8 @@
             // Setting Overrides
             if(v["setting_option"] === "luther_arkwright") {
                 setting_configs["sheet_style"] = "luther_arkwright";
+                setting_configs["magic_points_enabled"] = "0";
+                setting_configs["prana_points_enabled"] = "1";
                 setting_configs["tenacity_enabled"] = "1";
                 setting_configs["boating_standard"] = "0";
                 setting_configs["linguistics_enabled"] = "1";
@@ -2362,6 +2367,8 @@
                 setting_configs["theism_enabled"] = "0";
             } else if(v["setting_option"] === "m-space") {
                 setting_configs["herculean_mod"] = ".2";
+                setting_configs["magic_points_enabled"] = "0";
+                setting_configs["power_points_enabled"] = "1";
                 setting_configs["sheet_style"] = "m-space";
                 setting_configs["extended_conflict_enabled"] = "1",
                 setting_configs["action_points_calc"] = "set_2";
@@ -2449,12 +2456,26 @@
             } else {
                 newoptions["luck_points_rank"] = v["luck_points_rank_option"];
             }
-            
-            // Tenacity Enabled
-            if(v["tenacity_enabled_option"] === "default") {
-                newoptions["tenacity_enabled"] = setting_configs["tenacity_enabled"];
+
+            // Magic Points Enabled
+            if(v["magic_points_enabled_option"] === "default") {
+                newoptions["magic_points_enabled"] = setting_configs["magic_points_enabled"];
             } else {
-                newoptions["tenacity_enabled"] = v["tenacity_enabled_option"];
+                newoptions["magic_points_enabled"] = v["magic_points_enabled_option"];
+            }
+
+            // Power Points Enabled
+            if(v["power_points_enabled_option"] === "default") {
+                newoptions["power_points_enabled"] = setting_configs["power_points_enabled"];
+            } else {
+                newoptions["power_points_enabled"] = v["power_points_enabled_option"];
+            }
+            
+            // Prana Enabled
+            if(v["prana_enabled_option"] === "default") {
+                newoptions["prana_enabled"] = setting_configs["prana_enabled"];
+            } else {
+                newoptions["prana_enabled"] = v["prana_enabled_option"];
             }
 
             // Herculean Modifier
@@ -5965,7 +5986,7 @@
     });
     
     //Set campaign options if any change
-    on("change:setting_option change:vehicle_type_option change:extended_conflict_enabled_option change:simplified_combat_enabled_option change:luck_points_rank_option change:herculean_mod_option change:action_points_calc_option change:tenacity_enabled_option change:status_standard_option change:superstition_standard_option change:boating_standard_option change:linguistics_enabled_option change:dependencies_enabled_option change:firearms_enabled_option change:reach_enabled_option change:affiliations_enabled_option change:roman_magic_enabled_option change:arcane_magic_enabled_option change:divine_magic_enabled_option change:fae_powers_enabled_option change:folk_magic_enabled_option change:folk_magic_range_multiplier_option change:animism_enabled_option change:mysticism_enabled_option change:mythras_psionics_enabled_option change:ms_psionics_enabled_option change:sorcery_enabled_option change:theism_enabled_option change:max_devotional_pool_based_on_option", function() {
+    on("change:setting_option change:vehicle_type_option change:extended_conflict_enabled_option change:simplified_combat_enabled_option change:luck_points_rank_option change:herculean_mod_option change:action_points_calc_option change:magic_points_enabled_option change:power_points_enabled_option change:prana_points_enabled_option change:tenacity_enabled_option change:status_standard_option change:superstition_standard_option change:boating_standard_option change:linguistics_enabled_option change:dependencies_enabled_option change:firearms_enabled_option change:reach_enabled_option change:affiliations_enabled_option change:roman_magic_enabled_option change:arcane_magic_enabled_option change:divine_magic_enabled_option change:fae_powers_enabled_option change:folk_magic_enabled_option change:folk_magic_range_multiplier_option change:animism_enabled_option change:mysticism_enabled_option change:mythras_psionics_enabled_option change:ms_psionics_enabled_option change:sorcery_enabled_option change:theism_enabled_option change:max_devotional_pool_based_on_option", function() {
         console.log("Setting campaign options")
         campaign_options();
     });
