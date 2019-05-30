@@ -221,8 +221,12 @@
     
     // Experience Mod Auto Calc
     var calc_experience_mod = function() {
-        getAttrs(["cha", "experience_mod_other", "experience_mod_temp"], function(v) {
-            var base_value = Math.ceil(parseInt(v.cha)/6)-2;
+        getAttrs(["cha", "int", "experience_mod_calc", "experience_mod_other", "experience_mod_temp"], function(v) {
+            if(v.experience_mod_calc == "1") {
+                var base_value = Math.ceil(parseInt(v.int)/6)-2;
+            } else {
+                var base_value = Math.ceil(parseInt(v.cha)/6)-2;                
+            }
             
             setAttrs({
                 experience_mod_base: base_value,
@@ -230,7 +234,7 @@
             });
         });
     };
-    on("change:cha change:experience_mod_temp change:experience_mod_other", function() { calc_experience_mod(); });
+    on("change:cha change:int change:experience_mod_calc change:experience_mod_temp change:experience_mod_other", function() { calc_experience_mod(); });
 
     // Healing Rate Auto Calc
     var calc_healing_rate = function() { 
@@ -837,6 +841,10 @@
                 var base_value = parseInt(v[skill_base]);
             } else if (skill_name == "status") {
                 var base_value = parseInt(v[skill_base]);
+            } else if (skill_name == "strangeness") {
+                var base_value = parseInt(v[skill_base]);
+            } else if (skill_name == "the_soot") {
+                var base_value = parseInt(v[skill_base]);
             } else {
                 var base_value = char1_value + char2_value;
             }
@@ -1016,8 +1024,10 @@
     on("change:cha change:pow change:sing_experience change:sing_other change:sing_temp change:sing_penalty change:herculean_mod ", function() { calc_skill("sing", "@{cha}", "@{pow}", 1); });
     on("change:status_base change:status_experience change:status_temp change:status_other change:status_penalty change:herculean_mod", function() { calc_skill("status", "0", "0", 1); });
     on("change:int change:dex change:stealth_experience change:stealth_other change:stealth_temp change:stealth_penalty change:herculean_mod ", function() { calc_skill("stealth", "@{int}", "@{dex}", 1); });
+    on("change:strangeness_base change:strangeness_experience change:strangeness_temp change:strangeness_other change:strangeness_penalty change:herculean_mod", function() { calc_skill("strangeness", "0", "0", 1); });
     on("change:int change:pow change:superstition_experience change:superstition_other change:superstition_temp change:superstition_penalty change:herculean_mod ", function() { calc_skill("superstition", "@{int}", "@{pow}", 1); });
     on("change:str change:con change:swim_experience change:swim_other change:swim_temp change:swim_penalty change:herculean_mod ", function() { calc_skill("swim", "@{str}", "@{con}", 1); });
+    on("change:the_soot_base change:the_soot_experience change:the_soot_temp change:the_soot_other change:the_soot_penalty change:herculean_mod", function() { calc_skill("the_soot", "0", "0", 1); });
     on("change:pow change:theology_experience change:theology_other change:theology_temp change:theology_penalty change:theology_learned change:herculean_mod ", function() {
         getAttrs(["theology_learned"], function(v) {
             calc_skill("theology", "@{pow}", "@{pow}", v.theology_learned);
@@ -1139,7 +1149,7 @@
         });
     });
 
-    // Passions and Dependencies Auto Calc
+    // Passions and Dependencies  and Peculiarities Auto Calc
     var calc_passion = function(skill_name) {
         var skill_total = skill_name + "_total";
         var skill_score = skill_name + "_score";
@@ -1172,7 +1182,7 @@
             setAttrs(setObj);
         });
     };
-    on("change:repeating_passion change:repeating_dependency", function(event_info) { calc_passion(event_info.triggerName); });
+    on("change:repeating_passion change:repeating_peculiarity change:repeating_dependency", function(event_info) { calc_passion(event_info.triggerName); });
 
     // Spirits Max Auto Calc
     var calc_max_spirits = function() {
@@ -1280,8 +1290,10 @@
         calc_skill("sing", "@{cha}", "@{pow}", 1);
         calc_skill("status", "0", "0", 1);
         calc_skill("stealth", "@{int}", "@{dex}", 1);
+        calc_skill("strangeness", "0", "0", 1);
         calc_skill("superstition", "@{int}", "@{pow}", 1);
         calc_skill("swim", "@{str}", "@{con}", 1);
+        calc_skill("the_soot", "0", "0", 1);
         getAttrs(["theology_learned"], function(v) {
             calc_skill("theology", "@{pow}", "@{pow}", v.theology_learned);
         });
@@ -1391,6 +1403,13 @@
             if(idarray.length > 0) {
                 _.each(idarray, function(currentID, i) {
                     calc_passion("repeating_dependency_" + currentID);
+                });
+            }
+        });
+        getSectionIDs("repeating_peculiarity", function(idarray) {
+            if(idarray.length > 0) {
+                _.each(idarray, function(currentID, i) {
+                    calc_passion("repeating_peculiarity_" + currentID);
                 });
             }
         });
@@ -2381,7 +2400,7 @@
     }
     
     var campaign_options = function() {
-        getAttrs(["setting_option", "luck_points_rank_option", "herculean_mod_option", "battle_units_enabled_option", "vehicle_type_option", "extended_conflict_enabled_option", "simplified_combat_enabled_option", "action_points_calc_option", "magic_points_enabled_option", "power_points_enabled_option", "prana_points_enabled_option", "tenacity_enabled_option", "spirits_enabled_option", "luther_arkwright_style_option", "m_space_style_option", "boating_standard_option", "status_standard_option", "superstition_standard_option", "linguistics_enabled_option", "dependencies_enabled_option", "firearms_enabled_option", "reach_enabled_option", "affiliations_enabled_option", "ms_psionics_enabled_option", "roman_magic_enabled_option", "arcane_magic_enabled_option", "divine_magic_enabled_option", "folk_magic_enabled_option", "superpowers_enabled_option", "fae_powers_enabled_option", "folk_magic_range_multiplier_option", "animism_enabled_option", "mysticism_enabled_option", "mythras_psionics_enabled_option", "sorcery_enabled_option", "theism_enabled_option", "max_devotional_pool_based_on_option"], function(v) {
+        getAttrs(["setting_option", "luck_points_rank_option", "herculean_mod_option", "battle_units_enabled_option", "vehicle_type_option", "extended_conflict_enabled_option", "simplified_combat_enabled_option", "action_points_calc_option", "magic_points_enabled_option", "power_points_enabled_option", "prana_points_enabled_option", "tenacity_enabled_option", "spirits_enabled_option", "luther_arkwright_style_option", "m_space_style_option", "boating_standard_option", "status_standard_option", "strangeness_standard_option", "superstition_standard_option", "the_soot_standard_option", "linguistics_enabled_option", "dependencies_enabled_option", "peculiarities_enabled_option", "firearms_enabled_option", "reach_enabled_option", "affiliations_enabled_option", "ms_psionics_enabled_option", "roman_magic_enabled_option", "arcane_magic_enabled_option", "divine_magic_enabled_option", "folk_magic_enabled_option", "superpowers_enabled_option", "fae_powers_enabled_option", "folk_magic_range_multiplier_option", "animism_enabled_option", "mysticism_enabled_option", "mythras_psionics_enabled_option", "sorcery_enabled_option", "theism_enabled_option", "max_devotional_pool_based_on_option"], function(v) {
             var newoptions = {};
             // Default Setting Configs
             var setting_configs = {
@@ -2399,9 +2418,12 @@
                 tenacity_enabled: "0",
                 boating_standard: "1",
                 status_standard: "0",
+                strangeness_standard: "0",
                 superstition_standard: "0",
+                the_soot_standard: "0",
                 linguistics_enabled: "0",
                 dependencies_enabled: "0",
+                peculiarities_enabled: "0",
                 firearms_enabled: "0",
                 reach_enabled: "1",
                 ms_psionics_enabled: "0",
@@ -2630,12 +2652,26 @@
             } else {
                 newoptions["status_standard"] = v["status_standard_option"];
             }
+
+            // Strangeness Standard
+            if(v["strangeness_standard_option"] === "default") {
+                newoptions["strangeness_standard"] = setting_configs["strangeness_standard"];
+            } else {
+                newoptions["strangeness_standard"] = v["strangeness_standard_option"];
+            }
             
             // Superstition Standard
             if(v["superstition_standard_option"] === "default") {
                 newoptions["superstition_standard"] = setting_configs["superstition_standard"];
             } else {
                 newoptions["superstition_standard"] = v["superstition_standard_option"];
+            }
+
+            // The Soot Standard
+            if(v["the_soot_standard_option"] === "default") {
+                newoptions["the_soot_standard"] = setting_configs["the_soot_standard"];
+            } else {
+                newoptions["the_soot_standard"] = v["the_soot_standard_option"];
             }
             
             // Linguistics Enabled
@@ -2645,11 +2681,18 @@
                 newoptions["linguistics_enabled"] = v["linguistics_enabled_option"];
             }
             
-            // Dependencie Enabled
+            // Dependencies Enabled
             if(v["dependencies_enabled_option"] === "default") {
                 newoptions["dependencies_enabled"] = setting_configs["dependencies_enabled"];
             } else {
                 newoptions["dependencies_enabled"] = v["dependencies_enabled_option"];
+            }
+
+            // Peculiarities Enabled
+            if(v["peculiarities_enabled_option"] === "default") {
+                newoptions["peculiarities_enabled"] = setting_configs["peculiarities_enabled"];
+            } else {
+                newoptions["peculiarities_enabled"] = v["peculiarities_enabled_option"];
             }
             
             // Firearms Enabled
@@ -5624,10 +5667,14 @@
                         skillattrs["status_experience"] = skillValue;
                     } else if (skillKey.toLowerCase() == "stealth") {
                         skillattrs["stealth_experience"] = skillValue - dex - int;
+                    } else if (skillKey.toLowerCase() == "strangeness") {
+                        skillattrs["strangeness_experience"] = skillValue;
                     } else if (skillKey.toLowerCase() == "superstition") {
                         skillattrs["superstition_experience"] = skillValue - ((21 - int) + pow);
                     } else if (skillKey.toLowerCase() == "swim") {
                         skillattrs["swim_experience"] = skillValue - str - con;
+                    } else if (skillKey.toLowerCase() == "the soot") {
+                        skillattrs["the_soot_experience"] = skillValue;
                     } else if (skillKey.toLowerCase() == "unarmed") {
                         skillattrs["unarmed_experience"] = skillValue - str - dex;
                     } else if (skillKey.toLowerCase() == "willpower") {
@@ -5914,6 +5961,10 @@
                         skillattrs["repeating_dependency_" + skillid + "_name"] = skillKey;
                         skillattrs["repeating_dependency_" + skillid + "_score"] = skillValue;
                         skillattrs["repeating_dependency_" + skillid + "_details"] = 0;
+                    } else if (skillKey.toLowerCase().indexOf("peculiarity") !== -1) {
+                        skillattrs["repeating_peculiarity_" + skillid + "_name"] = skillKey;
+                        skillattrs["repeating_peculiarity_" + skillid + "_score"] = skillValue;
+                        skillattrs["repeating_peculiarity_" + skillid + "_details"] = 0;
                     } else if (skillKey.toLowerCase().indexOf("affiliation") !== -1) {
                         skillattrs["repeating_affiliation_" + skillid + "_name"] = skillKey;
                         skillattrs["repeating_affiliation_" + skillid + "_experience"] = skillValue - 40;
@@ -6126,7 +6177,7 @@
     });
     
     //Set campaign options if any change
-    on("change:setting_option change:vehicle_type_option change:battle_units_enabled_option change:extended_conflict_enabled_option change:simplified_combat_enabled_option change:luck_points_rank_option change:herculean_mod_option change:action_points_calc_option change:magic_points_enabled_option change:power_points_enabled_option change:prana_points_enabled_option change:spirits_enabled_option change:tenacity_enabled_option change:status_standard_option change:superstition_standard_option change:boating_standard_option change:linguistics_enabled_option change:dependencies_enabled_option change:firearms_enabled_option change:reach_enabled_option change:affiliations_enabled_option change:roman_magic_enabled_option change:arcane_magic_enabled_option change:divine_magic_enabled_option change:superpowers_enabled_option change:fae_powers_enabled_option change:folk_magic_enabled_option change:folk_magic_range_multiplier_option change:animism_enabled_option change:mysticism_enabled_option change:mythras_psionics_enabled_option change:ms_psionics_enabled_option change:sorcery_enabled_option change:theism_enabled_option change:max_devotional_pool_based_on_option", function() {
+    on("change:setting_option change:vehicle_type_option change:battle_units_enabled_option change:extended_conflict_enabled_option change:simplified_combat_enabled_option change:luck_points_rank_option change:herculean_mod_option change:action_points_calc_option change:magic_points_enabled_option change:power_points_enabled_option change:prana_points_enabled_option change:spirits_enabled_option change:tenacity_enabled_option change:status_standard_option change:strangeness_standard_option change:superstition_standard_option change:the_soot_standard_option change:boating_standard_option change:linguistics_enabled_option change:dependencies_enabled_option change:peculiarities_enabled_option change:firearms_enabled_option change:reach_enabled_option change:affiliations_enabled_option change:roman_magic_enabled_option change:arcane_magic_enabled_option change:divine_magic_enabled_option change:superpowers_enabled_option change:fae_powers_enabled_option change:folk_magic_enabled_option change:folk_magic_range_multiplier_option change:animism_enabled_option change:mysticism_enabled_option change:mythras_psionics_enabled_option change:ms_psionics_enabled_option change:sorcery_enabled_option change:theism_enabled_option change:max_devotional_pool_based_on_option", function() {
         console.log("Setting campaign options")
         campaign_options();
     });

@@ -602,6 +602,13 @@ input.sheet-dependencies-enabled-toggle:checked ~ div .sheet-dependencies-enable
     display: initial;
 }
 
+input.sheet-peculiarities-enabled-toggle ~ div .sheet-peculiarities-enabled {
+    display: none;
+}
+input.sheet-peculiarities-enabled-toggle:checked ~ div .sheet-peculiarities-enabled {
+    display: initial;
+}
+
 input.sheet-rank-enabled-toggle:not(:checked) ~ div .sheet-rank-enabled {
     display: none;
 }
@@ -651,6 +658,14 @@ input.sheet-status-standard-toggle ~ div .sheet-status-standard {
 }
 input.sheet-status-standard-toggle:checked ~ div .sheet-status-standard {
     display: initial;
+}
+
+input.sheet-strangeness-standard-toggle:not(:checked) ~ div .sheet-strangeness-standard {
+    display: none;
+}
+
+input.sheet-the-soot-standard-toggle:not(:checked) ~ div .sheet-the-soot-standard {
+    display: none;
 }
 
 input.sheet-superstition-standard-toggle ~ div .sheet-superstition-standard {

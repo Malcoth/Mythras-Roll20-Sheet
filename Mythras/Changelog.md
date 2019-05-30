@@ -4,6 +4,14 @@ Versions have two numbers Major.Minor
 **Major**: Indicates that some form of compatibility has broken.  These versions should have notes indicating what broke and how to handle it.  May include major UI changes to sheet layout and design or fundament changes in how parts of the sheet are managed.
 
 **Minor**: Indicates the addition of new features, bugfixes or other adjustments which do not alter variable names or fundamental workflow.
+## 2.4
+### New Features
+* Added Toggle to base Exp Mod on INT
+* Added option to make Strangeness a Standard Skill
+* Added option to make The Soot a Standard Skill
+* Added Peculiarities
+* [ToDo]Added Odd Soot Magic cost Range duration Area Mass Move
+* [ToDo]Added Odd Soot to Settings with logo
 
 ## 2.3
 ### New Features
