@@ -10,8 +10,8 @@ Versions have two numbers Major.Minor
 * Added option to make Strangeness a Standard Skill
 * Added option to make The Soot a Standard Skill
 * Added Peculiarities
-* [ToDo]Added Odd Soot Magic cost Range duration Area Mass Move
-* [ToDo]Added Odd Soot to Settings with logo
+* Added Odd Soot Magic Support
+* Added Odd Soot to Settings [ToDo] Logo
 
 ## 2.3
 ### New Features

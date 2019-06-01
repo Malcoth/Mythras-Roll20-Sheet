@@ -499,6 +499,9 @@ input.sheet-luther-arkwright-style-toggle:not(:checked) ~ div .sheet-luther-arkw
 input.sheet-m-space-style-toggle:not(:checked) ~ div .sheet-m-space-style,
 input.sheet-m-space-style-toggle:not(:checked) ~ input[type="radio"].sheet-m-space-style,
 input.sheet-m-space-style-toggle:not(:checked) ~ span.sheet-m-space-style,
+input.sheet-odd-soot-style-toggle:not(:checked) ~ div .sheet-odd-soot-style,
+input.sheet-odd-soot-style-toggle:not(:checked) ~ input[type="radio"].sheet-odd-soot-style,
+input.sheet-odd-soot-style-toggle:not(:checked) ~ span.sheet-odd-soot-style,
 input.sheet-thennla-style-toggle:not(:checked) ~ div .sheet-thennla-style {
     display: none;
 }
@@ -509,6 +512,9 @@ input.sheet-luther-arkwright-style-toggle:checked ~ div .sheet-luther-arkwright-
 input.sheet-m-space-style-toggle:checked ~ div .sheet-m-space-style,
 input.sheet-m-space-style-toggle:checked ~ input[type="radio"].sheet-m-space-style,
 input.sheet-m-space-style-toggle:checked ~ span.sheet-m-space-style,
+input.sheet-odd-soot-style-toggle:checked ~ div .sheet-odd-soot-style,
+input.sheet-odd-soot-style-toggle:checked ~ input[type="radio"].sheet-odd-soot-style,
+input.sheet-odd-soot-style-toggle:checked ~ span.sheet-odd-soot-style,
 input.sheet-thennla-style-toggle:checked ~ div .sheet-thennla-style {
     display: initial;
 }
@@ -676,6 +682,10 @@ input.sheet-superstition-standard-toggle:checked ~ div .sheet-superstition-stand
 }
 
 input.sheet-ms-psionics-enabled-toggle:not(:checked) ~ div .sheet-ms-psionics-enabled {
+    display: none;
+}
+
+input.sheet-os-magic-enabled-toggle:not(:checked) ~ div .sheet-os-magic-enabled {
     display: none;
 }
 
@@ -1660,6 +1670,10 @@ input[type="checkbox"].sheet-display-mythras-psionics:not(:checked) ~ div.sheet-
 }
 
 input[type="checkbox"].sheet-display-ms-psionics:not(:checked) ~ div.sheet-display-ms-psionics {
+    display: none;
+}
+
+input[type="checkbox"].sheet-display-os-magic:not(:checked) ~ div.sheet-display-os-magic {
     display: none;
 }
 

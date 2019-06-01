@@ -1,5 +1,5 @@
 {
-    "setting-order": "default,atvw,agony_and_ecstasy,classic_fantasy,luther_arkwright,mspace,monster_island,mythic_britain,mythic_constantinople,mythic_rome,thennla,worlds_united",
+    "setting-order": "default,atvw,agony_and_ecstasy,classic_fantasy,luther_arkwright,mspace,monster_island,mythic_britain,mythic_constantinople,mythic_rome,odd_soot,thennla,worlds_united",
     "vehicle-type-order": "default,disabled,mythras,mspace,ships",
     "devotional-pool-type-order": "default,cult_rank,pow",
     "ship-hull-order": "utility,galley,transport",
@@ -493,7 +493,8 @@
     "m-space-u": "M-Space",
     "power-points-u": "Power Points",
     "show-reduced-description-u": "Display a result for high skills reduced down to 100 in the roll templates.",
-    "extended-conflict-enabled-description-u": "Use the extended conflict resolution system from M-Space.",
+    "extended-conflict-enabled-description-u": "Use the extended conflict resolution system from M-Space & Odd Soot.",
+    "simplified-combat-enabled-description-u": "Use the optional simplified combat rules from M-Space & Odd Soot",
     "roman-magic-enabled-description-u": "Enables the Roman magic section of the sheet for magic as used in Mythic Roman.",
     "ms-psionics-enabled-description-u": "Enables the Psionics section of the sheet per M-Space rules.",
     "mythras-psionics-enabled-description-u": "Enables the Psionics section of the sheet per Mythras rules.",
@@ -840,5 +841,8 @@
     "peculiarities-u": "Peculiarities",
     "and-peculiarities-u": "& Peculiarities",
     "peculiarities-enabled-u": "Peculiarities Enabled",
-    "peculiarities-enabled-description-u": "Enable the Peculiarities mechanics."
+    "peculiarities-enabled-description-u": "Enable the Peculiarities mechanics.",
+    "os-magic-enabled-u": "Odd Soot Magic Enabled",
+    "os-magic-enabled-description-u": "Enables the Magic section of the sheet per Odd Soot rules.",
+    "odd-soot-u": "Odd Soot"
 }
