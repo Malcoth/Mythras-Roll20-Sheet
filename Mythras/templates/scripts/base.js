@@ -2410,6 +2410,11 @@
                 setAttrs({version: "2.3"});
                 versioning();
             }
+            else if(v["version"] === "2.3") {
+                console.log("upgrading to v2.4");
+                setAttrs({version: "2.4"});
+                versioning();
+            }
             else {
                 console.log("Sheet fully updated");
             }
