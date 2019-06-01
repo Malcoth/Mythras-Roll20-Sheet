@@ -6,7 +6,7 @@ Versions have two numbers Major.Minor
 **Minor**: Indicates the addition of new features, bugfixes or other adjustments which do not alter variable names or fundamental workflow.
 ## 2.4
 ### New Features
-* Added Toggle to base Exp Mod on INT
+* Added toggle to base Exp Mod on INT
 * Added option to make Strangeness a Standard Skill
 * Added option to make The Soot a Standard Skill
 * Added Peculiarities

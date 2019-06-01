@@ -1610,12 +1610,12 @@ textarea.sheet-known-languages {
 
 div.sheet-dependency-name {
     display: inline-block;
-    width: 36%;
+    width: 35.75%;
 }
 
 div.sheet-passion-name {
     display: inline-block;
-    width: 42%;
+    width: 41.75%;
 }
 
 div.sheet-skill-checkbox {
@@ -1824,6 +1824,12 @@ div.sheet-spell-description {
     display: inline-block;
     text-align: center;
     width: 79%;
+}
+
+div.sheet-odd-soot-spell-description {
+    display: inline-block;
+    text-align: center;
+    width: 52%;
 }
 
 div.sheet-spell-button {
