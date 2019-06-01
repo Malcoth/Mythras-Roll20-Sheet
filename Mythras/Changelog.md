@@ -5,13 +5,17 @@ Versions have two numbers Major.Minor
 
 **Minor**: Indicates the addition of new features, bugfixes or other adjustments which do not alter variable names or fundamental workflow.
 ## 2.4
+### Bug Fixes
+* Fixed overflow in Firefox with Passions
+
 ### New Features
 * Added toggle to base Exp Mod on INT
 * Added option to make Strangeness a Standard Skill
 * Added option to make The Soot a Standard Skill
 * Added Peculiarities
 * Added Odd Soot Magic Support
-* Added Odd Soot to Settings [ToDo] Logo
+* Added Odd Soot to Settings
+* [ToDo] Logo
 
 ## 2.3
 ### New Features
