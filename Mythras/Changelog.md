@@ -7,6 +7,7 @@ Versions have two numbers Major.Minor
 ## 2.4
 ### Bug Fixes
 * Fixed overflow in Firefox with Passions
+* Fixed current/max fields which would be mis-synced after JSON imports
 
 ### New Features
 * Added toggle to base Exp Mod on INT

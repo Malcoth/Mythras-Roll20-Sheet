@@ -4781,6 +4781,7 @@
                     movement_rate_species_swim: characterData["attributes"]["movement"]
                 });
             }
+            /*
             if (typeof characterData["attributes"]["action_points"] !== 'undefined') {
                 setAttrs({
                     action_points: characterData["attributes"]["action_points"],
@@ -4856,6 +4857,7 @@
                     tenacity_mook10: characterData["attributes"]["tenacity"]
                 });
             }
+            */
             if (typeof characterData["attributes"]["strike_rank"] !== 'undefined') {
                 if (characterData["attributes"]["strike_rank"].includes("-")) {
                     var strike_rank_other = characterData["attributes"]["strike_rank"].split("-")[1].replace(')','');
@@ -4893,7 +4895,7 @@
                 if (typeof characterData["hit_locations"][0]["ap"] !== 'undefined') {
                     setAttrs({location1_armor_ap: characterData["hit_locations"][0]["ap"]});
                 }
-                var simplified_hp_val = Math.ceil((con+siz)/2);
+                /*var simplified_hp_val = Math.ceil((con+siz)/2);
                 setAttrs({
                     simplified_hp: simplified_hp_val,
                     simplified_hp_mook1: simplified_hp_val,
@@ -4906,7 +4908,7 @@
                     simplified_hp_mook8: simplified_hp_val,
                     simplified_hp_mook9: simplified_hp_val,
                     simplified_hp_mook10: simplified_hp_val
-                });
+                });*/
             } else {
                 var base_hp = Math.ceil((con+siz)/5);
                 
@@ -4918,6 +4920,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location1_table_start: table[0],
                         location1_table_end: table[1],
@@ -4937,7 +4940,17 @@
                         location1_hp_mook9: characterData["hit_locations"][0]["hp"],
                         location1_hp_mook10: characterData["hit_locations"][0]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location1_table_start: table[0],
+                        location1_table_end: table[1],
+                        location1_name: characterData["hit_locations"][0]["name"],
+                        location1_armor_ap: characterData["hit_locations"][0]["ap"],
+                        location1_armor_ap_max: characterData["hit_locations"][0]["ap"],
+                        location1_hp_max_base_mod: characterData["hit_locations"][0]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location1_table_start: "0",
                         location1_table_end: "0",
@@ -4957,6 +4970,15 @@
                         location1_hp_mook9: "0",
                         location1_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location1_table_start: "0",
+                        location1_table_end: "0",
+                        location1_name: " ",
+                        location1_armor_ap: "0",
+                        location1_armor_ap_max: "0",
+                        location1_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][1] !== 'undefined') {
@@ -4967,6 +4989,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location2_table_start: table[0],
                         location2_table_end: table[1],
@@ -4986,7 +5009,17 @@
                         location2_hp_mook9: characterData["hit_locations"][1]["hp"],
                         location2_hp_mook10: characterData["hit_locations"][1]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location2_table_start: table[0],
+                        location2_table_end: table[1],
+                        location2_name: characterData["hit_locations"][1]["name"],
+                        location2_armor_ap: characterData["hit_locations"][1]["ap"],
+                        location2_armor_ap_max: characterData["hit_locations"][1]["ap"],
+                        location2_hp_max_base_mod: characterData["hit_locations"][1]["hp"] - base_hp,
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location2_table_start: "0",
                         location2_table_end: "0",
@@ -5006,6 +5039,15 @@
                         location2_hp_mook9: "0",
                         location2_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location2_table_start: "0",
+                        location2_table_end: "0",
+                        location2_name: " ",
+                        location2_armor_ap: "0",
+                        location2_armor_ap_max: "0",
+                        location2_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][2] !== 'undefined') {
@@ -5016,6 +5058,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location3_table_start: table[0],
                         location3_table_end: table[1],
@@ -5035,7 +5078,17 @@
                         location3_hp_mook9: characterData["hit_locations"][2]["hp"],
                         location3_hp_mook10: characterData["hit_locations"][2]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location3_table_start: table[0],
+                        location3_table_end: table[1],
+                        location3_name: characterData["hit_locations"][2]["name"],
+                        location3_armor_ap: characterData["hit_locations"][2]["ap"],
+                        location3_armor_ap_max: characterData["hit_locations"][2]["ap"],
+                        location3_hp_max_base_mod: characterData["hit_locations"][2]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location3_table_start: "0",
                         location3_table_end: "0",
@@ -5054,6 +5107,15 @@
                         location3_hp_mook9: "0",
                         location3_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location3_table_start: "0",
+                        location3_table_end: "0",
+                        location3_name: " ",
+                        location3_armor_ap: "0",
+                        location3_armor_ap_max: "0",
+                        location3_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][3] !== 'undefined') {
@@ -5064,6 +5126,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location4_table_start: table[0],
                         location4_table_end: table[1],
@@ -5083,7 +5146,17 @@
                         location4_hp_mook9: characterData["hit_locations"][3]["hp"],
                         location4_hp_mook10: characterData["hit_locations"][3]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location4_table_start: table[0],
+                        location4_table_end: table[1],
+                        location4_name: characterData["hit_locations"][3]["name"],
+                        location4_armor_ap: characterData["hit_locations"][3]["ap"],
+                        location4_armor_ap_max: characterData["hit_locations"][3]["ap"],
+                        location4_hp_max_base_mod: characterData["hit_locations"][3]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location4_table_start: "0",
                         location4_table_end: "0",
@@ -5102,6 +5175,15 @@
                         location4_hp_mook9: "0",
                         location4_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location4_table_start: "0",
+                        location4_table_end: "0",
+                        location4_name: " ",
+                        location4_armor_ap: "0",
+                        location4_armor_ap_max: "0",
+                        location4_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][4] !== 'undefined') {
@@ -5112,6 +5194,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location5_table_start: table[0],
                         location5_table_end: table[1],
@@ -5131,7 +5214,17 @@
                         location5_hp_mook9: characterData["hit_locations"][4]["hp"],
                         location5_hp_mook10: characterData["hit_locations"][4]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location5_table_start: table[0],
+                        location5_table_end: table[1],
+                        location5_name: characterData["hit_locations"][4]["name"],
+                        location5_armor_ap: characterData["hit_locations"][4]["ap"],
+                        location5_armor_ap_max: characterData["hit_locations"][4]["ap"],
+                        location5_hp_max_base_mod: characterData["hit_locations"][4]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location5_table_start: "0",
                         location5_table_end: "0",
@@ -5150,6 +5243,15 @@
                         location5_hp_mook9: "0",
                         location5_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location5_table_start: "0",
+                        location5_table_end: "0",
+                        location5_name: " ",
+                        location5_armor_ap: "0",
+                        location5_armor_ap_max: "0",
+                        location5_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][5] !== 'undefined') {
@@ -5160,6 +5262,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location6_table_start: table[0],
                         location6_table_end: table[1],
@@ -5179,7 +5282,17 @@
                         location6_hp_mook9: characterData["hit_locations"][5]["hp"],
                         location6_hp_mook10: characterData["hit_locations"][5]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location6_table_start: table[0],
+                        location6_table_end: table[1],
+                        location6_name: characterData["hit_locations"][5]["name"],
+                        location6_armor_ap: characterData["hit_locations"][5]["ap"],
+                        location6_armor_ap_max: characterData["hit_locations"][5]["ap"],
+                        location6_hp_max_base_mod: characterData["hit_locations"][5]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location6_table_start: "0",
                         location6_table_end: "0",
@@ -5198,6 +5311,15 @@
                         location6_hp_mook9: "0",
                         location6_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location6_table_start: "0",
+                        location6_table_end: "0",
+                        location6_name: " ",
+                        location6_armor_ap: "0",
+                        location6_armor_ap_max: "0",
+                        location6_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][6] !== 'undefined') {
@@ -5208,6 +5330,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location7_table_start: table[0],
                         location7_table_end: table[1],
@@ -5227,7 +5350,17 @@
                         location7_hp_mook9: characterData["hit_locations"][6]["hp"],
                         location7_hp_mook10: characterData["hit_locations"][6]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location7_table_start: table[0],
+                        location7_table_end: table[1],
+                        location7_name: characterData["hit_locations"][6]["name"],
+                        location7_armor_ap: characterData["hit_locations"][6]["ap"],
+                        location7_armor_ap_max: characterData["hit_locations"][6]["ap"],
+                        location7_hp_max_base_mod: characterData["hit_locations"][6]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location7_table_start: "0",
                         location7_table_end: "0",
@@ -5246,6 +5379,15 @@
                         location7_hp_mook9: "0",
                         location7_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location7_table_start: "0",
+                        location7_table_end: "0",
+                        location7_name: " ",
+                        location7_armor_ap: "0",
+                        location7_armor_ap_max: "0",
+                        location7_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][7] !== 'undefined') {
@@ -5256,6 +5398,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location8_table_start: table[0],
                         location8_table_end: table[1],
@@ -5275,7 +5418,17 @@
                         location8_hp_mook9: characterData["hit_locations"][7]["hp"],
                         location8_hp_mook10: characterData["hit_locations"][7]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location8_table_start: table[0],
+                        location8_table_end: table[1],
+                        location8_name: characterData["hit_locations"][7]["name"],
+                        location8_armor_ap: characterData["hit_locations"][7]["ap"],
+                        location8_armor_ap_max: characterData["hit_locations"][7]["ap"],
+                        location8_hp_max_base_mod: characterData["hit_locations"][7]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location8_table_start: "0",
                         location8_table_end: "0",
@@ -5294,6 +5447,15 @@
                         location8_hp_mook9: "0",
                         location8_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location8_table_start: "0",
+                        location8_table_end: "0",
+                        location8_name: " ",
+                        location8_armor_ap: "0",
+                        location8_armor_ap_max: "0",
+                        location8_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][8] !== 'undefined') {
@@ -5304,6 +5466,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location9_table_start: table[0],
                         location9_table_end: table[1],
@@ -5323,7 +5486,17 @@
                         location9_hp_mook9: characterData["hit_locations"][8]["hp"],
                         location9_hp_mook10: characterData["hit_locations"][8]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location9_table_start: table[0],
+                        location9_table_end: table[1],
+                        location9_name: characterData["hit_locations"][8]["name"],
+                        location9_armor_ap: characterData["hit_locations"][8]["ap"],
+                        location9_armor_ap_max: characterData["hit_locations"][8]["ap"],
+                        location9_hp_max_base_mod: characterData["hit_locations"][8]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location9_table_start: "0",
                         location9_table_end: "0",
@@ -5342,6 +5515,15 @@
                         location9_hp_mook9: "0",
                         location9_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location9_table_start: "0",
+                        location9_table_end: "0",
+                        location9_name: " ",
+                        location9_armor_ap: "0",
+                        location9_armor_ap_max: "0",
+                        location9_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][9] !== 'undefined') {
@@ -5352,6 +5534,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location10_table_start: table[0],
                         location10_table_end: table[1],
@@ -5371,7 +5554,17 @@
                         location10_hp_mook9: characterData["hit_locations"][9]["hp"],
                         location10_hp_mook10: characterData["hit_locations"][9]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location10_table_start: table[0],
+                        location10_table_end: table[1],
+                        location10_name: characterData["hit_locations"][9]["name"],
+                        location10_armor_ap: characterData["hit_locations"][9]["ap"],
+                        location10_armor_ap_max: characterData["hit_locations"][9]["ap"],
+                        location10_hp_max_base_mod: characterData["hit_locations"][9]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location10_table_start: "0",
                         location10_table_end: "0",
@@ -5390,6 +5583,15 @@
                         location10_hp_mook9: "0",
                         location10_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location10_table_start: "0",
+                        location10_table_end: "0",
+                        location10_name: " ",
+                        location10_armor_ap: "0",
+                        location10_armor_ap_max: "0",
+                        location10_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][10] !== 'undefined') {
@@ -5400,6 +5602,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location11_table_start: table[0],
                         location11_table_end: table[1],
@@ -5419,7 +5622,17 @@
                         location11_hp_mook9: characterData["hit_locations"][10]["hp"],
                         location11_hp_mook10: characterData["hit_locations"][10]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location11_table_start: table[0],
+                        location11_table_end: table[1],
+                        location11_name: characterData["hit_locations"][10]["name"],
+                        location11_armor_ap: characterData["hit_locations"][10]["ap"],
+                        location11_armor_ap_max: characterData["hit_locations"][10]["ap"],
+                        location11_hp_max_base_mod: characterData["hit_locations"][10]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location11_table_start: "0",
                         location11_table_end: "0",
@@ -5438,6 +5651,15 @@
                         location11_hp_mook9: "0",
                         location11_hp_mook10: "0"
                     });
+                    */
+                    setAttrs({
+                        location11_table_start: "0",
+                        location11_table_end: "0",
+                        location11_name: " ",
+                        location11_armor_ap: "0",
+                        location11_armor_ap_max: "0",
+                        location11_hp_max_base_mod: 0 - base_hp
+                    });
                 }
                 
                 if (typeof characterData["hit_locations"][11] !== 'undefined') {
@@ -5448,6 +5670,7 @@
                     } else {
                         table[1] = parseInt(table[1]);
                     }
+                    /*
                     setAttrs({
                         location12_table_start: table[0],
                         location12_table_end: table[1],
@@ -5467,7 +5690,17 @@
                         location12_hp_mook9: characterData["hit_locations"][11]["hp"],
                         location12_hp_mook10: characterData["hit_locations"][11]["hp"]
                     });
+                    */
+                    setAttrs({
+                        location12_table_start: table[0],
+                        location12_table_end: table[1],
+                        location12_name: characterData["hit_locations"][11]["name"],
+                        location12_armor_ap: characterData["hit_locations"][11]["ap"],
+                        location12_armor_ap_max: characterData["hit_locations"][11]["ap"],
+                        location12_hp_max_base_mod: characterData["hit_locations"][11]["hp"] - base_hp
+                    });
                 } else {
+                    /*
                     setAttrs({
                         location12_table_start: "0",
                         location12_table_end: "0",
@@ -5485,6 +5718,15 @@
                         location12_hp_mook8: "0",
                         location12_hp_mook9: "0",
                         location12_hp_mook10: "0"
+                    });
+                    */
+                    setAttrs({
+                        location12_table_start: "0",
+                        location12_table_end: "0",
+                        location12_name: " ",
+                        location12_armor_ap: "0",
+                        location12_armor_ap_max: "0",
+                        location12_hp_max_base_mod: 0 - base_hp
                     });
                 }
             }
