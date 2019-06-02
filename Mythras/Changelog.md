@@ -16,7 +16,6 @@ Versions have two numbers Major.Minor
 * Added Peculiarities
 * Added Odd Soot Magic Support
 * Added Odd Soot to Settings
-* [ToDo] Logo
 
 ## 2.3
 ### New Features
